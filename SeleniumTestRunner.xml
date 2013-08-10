@@ -1,0 +1,186 @@
+<testsuites>
+<testsuite name="IE : SampleApp : tests : models : ListItem_tests.ts" tests="2" failures="0">
+<testcase name="can construct a ListItem model"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="can construct a ListItemCollection model"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="IE : SampleApp : tests : services : ListItemService_Tests" tests="1" failures="0">
+<testcase name="MockListItemService should raise ListItemCollection_LoadedEvent"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="IE : ListItemView_Tests" tests="3" failures="0">
+<testcase name="config service should have stored ListItemView.html as snippet"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="renders a list item view"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="list item clicked fires ListItem_Clicked event"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="IE : ListItemCollectionView_Tests" tests="2" failures="0">
+<testcase name="config service should have stored ListItemCollectionView.html as snippet"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="renders a list item collection view"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="IE : SampleApp_Tests" tests="1" failures="0">
+<testcase name="should handle handle_ListItemCollection_LoadedEvent"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="IE : TypeScriptTinyIoC_AMD : Test_ConfigSettingsService" tests="3" failures="0">
+<testcase name="should be able to read a config setting"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="should be able to read a config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="should be able to read a second config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+</testsuite>
+<testsuite name="IE : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoc.ts" tests="6" failures="0">
+<testcase name="test register class of interface does not throw"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test register throws with invalid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test resolve class of interface returns valid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test resolve class with no implementation throws"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test interface checker does not throw with valid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test interface throws with invalid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+</testsuite>
+<testsuite name="IE : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoc.ts" tests="6" failures="0">
+<testcase name="test register class of interface does not throw"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test register throws with invalid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test resolve class of interface returns valid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test resolve class with no implementation throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test interface checker does not throw with valid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test interface throws with invalid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+<testsuite name="IE : TypeScriptTinyIoC_AMD : Test_ConfigSettingsService" tests="3" failures="0">
+<testcase name="should be able to read a config setting"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="should be able to read a config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="should be able to read a second config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+<testsuite name="IE : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoC_Events.ts" tests="9" failures="0">
+<testcase name="test register and raise works correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test raise event with multiple handlers fires on all handlers"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test raise event of wrong type throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with class that does not implement interface throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with AMD class gets event correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with AMD class that does not implement interface throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test one class with two registerHandler events gets called correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test unregisterHandler method does unregister the registered handlers"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test unregisterHandler method should not remove eventHandler if it has multiple handlers attached and one of them is unregisterd"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : SampleApp : tests : models : ListItem_tests.ts" tests="2" failures="0">
+<testcase name="can construct a ListItem model"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="can construct a ListItemCollection model"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : SampleApp : tests : services : ListItemService_Tests" tests="1" failures="0">
+<testcase name="MockListItemService should raise ListItemCollection_LoadedEvent"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : ListItemView_Tests" tests="3" failures="0">
+<testcase name="config service should have stored ListItemView.html as snippet"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="renders a list item view"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="list item clicked fires ListItem_Clicked event"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : ListItemCollectionView_Tests" tests="2" failures="0">
+<testcase name="config service should have stored ListItemCollectionView.html as snippet"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+<testcase name="renders a list item collection view"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : SampleApp_Tests" tests="1" failures="0">
+<testcase name="should handle handle_ListItemCollection_LoadedEvent"> classname="Jasmine.SpecRunner_SampleApp"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : TypeScriptTinyIoC_AMD : Test_ConfigSettingsService" tests="3" failures="0">
+<testcase name="should be able to read a config setting"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="should be able to read a config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="should be able to read a second config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoc.ts" tests="6" failures="0">
+<testcase name="test register class of interface does not throw"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test register throws with invalid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test resolve class of interface returns valid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test resolve class with no implementation throws"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test interface checker does not throw with valid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+<testcase name="test interface throws with invalid object"> classname="Jasmine.SpecRunner_Common"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoc.ts" tests="6" failures="0">
+<testcase name="test register class of interface does not throw"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test register throws with invalid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test resolve class of interface returns valid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test resolve class with no implementation throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test interface checker does not throw with valid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test interface throws with invalid object"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : TypeScriptTinyIoC_AMD : Test_ConfigSettingsService" tests="3" failures="0">
+<testcase name="should be able to read a config setting"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="should be able to read a config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="should be able to read a second config setting from TypeScriptTinyIoC"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+<testsuite name="Chrome : TypeScriptTinyIoC_AMD : Test_TypeScriptTinyIoC_Events.ts" tests="9" failures="0">
+<testcase name="test register and raise works correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test raise event with multiple handlers fires on all handlers"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test raise event of wrong type throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with class that does not implement interface throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with AMD class gets event correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test registerHandler with AMD class that does not implement interface throws"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test one class with two registerHandler events gets called correctly"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test unregisterHandler method does unregister the registered handlers"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+<testcase name="test unregisterHandler method should not remove eventHandler if it has multiple handlers attached and one of them is unregisterd"> classname="Jasmine.SpecRunner_AMD"
+</testcase>
+</testsuite>
+</testsuites>

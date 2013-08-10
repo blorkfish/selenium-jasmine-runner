@@ -1,0 +1,3 @@
+﻿http://localhost:1492/SpecRunner_SampleApp.html
+http://localhost:1492/SpecRunner_Common.html
+http://localhost:1492/SpecRunner_AMD.html
