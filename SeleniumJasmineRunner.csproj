@@ -50,6 +50,7 @@
     <Compile Include="CmdLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestReporters.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="external_dlls\WebDriver.dll" />

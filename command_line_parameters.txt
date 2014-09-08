@@ -1,0 +1,1 @@
+-chrome -ie -timeout 250 -ie-path "D:\TeamCityTools\selenium-jasmine-runner\IEDriverServer_Win32_2.35.3" -chrome-path "D:\TeamCityTools\selenium-jasmine-runner\chromedriver_win32" -reporter teamcity -input-url-file ".\SpecRunnerList.txt"
