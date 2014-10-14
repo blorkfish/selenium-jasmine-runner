@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8" />
+
+        <title>TeamCity Reporter Spec</title>
+
+        <link rel="stylesheet" href="./lib/jasmine-2.0.0/jasmine.css" type="text/css" />
+        <script type="text/javascript" src="./lib/jasmine-2.0.0/jasmine.js"></script>
+        <script type="text/javascript" src="./lib/jasmine-2.0.0/jasmine-html.js"></script>
+
+        <script type="text/javascript" src="./teamcity_reporter.js"></script>
+        <script type="text/javascript" src="./lib/jasmine-2.0.0/boot.js"></script>
+    </head>
+<body>
+    <script type="text/javascript">
+        describe("Some base suite", function() {
+            describe("Basic Suite", function() {
+                it("Should pass a basic truthiness test.", function() {
+                    expect(true).toEqual(true);
+                    expect(false).toEqual(false);
+                });
+                it("Should fail when it hits an inequal statement.", function() {
+                    expect(1+1).toEqual(3);
+                });
+            });
+
+            xdescribe("A skipped suite", function() {
+                it("Should not be reported.", function() {
+                    expect(0).toEqual(0);
+                });
+                it("Should still add to the skipped count", function() {
+                    expect(0).toEqual(0);
+                });
+            });
+            describe("A suite with a skipped suite", function() {
+                describe("A suite with a skipped test", function() {
+                    xit("Should be executed but skipped.", function() {
+                        expect(0).toEqual(0);
+                    });
+                    it("Should not be skipped.", function() {
+                        expect(0).toEqual(0);
+                    });
+                });
+                xdescribe("A nested skipped suite", function() {
+                    it("Should not be reported.", function() {
+                        expect(0).toEqual(0);
+                    });
+                    it("Should still add to the skipped count", function() {
+                        expect(0).toEqual(0);
+                    });
+                });
+            });
+        });
+        describe("Another Suite", function() {
+            it("Should pass this test as well.", function() {
+                expect(0).toEqual(0);
+            });
+        });
+    </script>
+    
+    <script type="application/javascript">
+        window.api = new jasmine.JsApiReporter({});
+        jasmine.getEnv().addReporter(window.api);
+
+        window.tcapi = new jasmineReporters.TeamCityReporter({});
+        jasmine.getEnv().addReporter(window.tcapi);
+
+        var env = jasmine.getEnv();
+        var test = "test";
+
+        var resultsDone = false;
+        
+        window.setInterval(function() {
+            if (window.api.finished && !resultsDone) {
+
+                var suites = window.api.suites();
+                var test = window.tcapi;
+
+                var logItems = window.tcapi.logItems;
+
+                for (var i = 0; i < logItems.length; i++) {
+                    // non jquery way of appending dom elements
+                    var logElement = document.getElementById('teamCityReporterLog');
+                    var node = document.createElement('div');
+                    node.setAttribute('class','logentry');
+                    var textNode = document.createTextNode(logItems[i]);
+                    node.appendChild(textNode);
+                    logElement.appendChild(node);
+
+                }
+
+                resultsDone = true;
+                var doneFlag = document.getElementById('teamCityResultsDone');
+                var doneText = document.createTextNode('done');
+                doneFlag.appendChild(doneText);
+            }
+        }, 5000);
+    </script>
+    
+    <div id="teamCityReporterLog"></div>
+    <div id="teamCityResultsDone"></div>
+</body>
+</html>

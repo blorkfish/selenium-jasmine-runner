@@ -9,6 +9,7 @@ using System.Threading;
 using ITDM;
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
+//using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.UI;
 using SeleniumJasmineRunner;
 
@@ -120,13 +121,16 @@ namespace HDWA.SeleniumTestRunner
 
                 ConsoleCmdLine ccl = new ConsoleCmdLine();
                 CmdLineString outputFileName = new CmdLineString("output-file", false, "Output File Name - defaults to SeleniumJasmineResults.xml");
-                CmdLineString chromeBaseDir = new CmdLineString("chrome-path", false, @"Path to ChromeDriver - defaults to c:\chromedriver_win32_2.2");
-                CmdLineString ieBaseDir = new CmdLineString("ie-path", false, @"Path to ChromeDriver - defaults to c:\IEDriverServer_x86_2.34.0");
+                CmdLineString chromeBaseDir = new CmdLineString("chrome-path", false, @"Path to ChromeDriver.exe - defaults to c:\selenium\chromedriver_win32_2.2");
+                CmdLineString ieBaseDir = new CmdLineString("ie-path", false, @"Path to IEDriverServer.exe - defaults to c:\selenium\IEDriverServer_x86_2.34.0");
                 CmdLineString inputUrlList = new CmdLineString("input-url-file", false, "Input file containing urls to test - defaults to SpecRunnerList.txt");
                 CmdLineParameter runChrome = new CmdLineParameter("chrome", false, "Run Selenium with the chrome driver");
                 CmdLineParameter runIE = new CmdLineParameter("ie", false, "Run Selenium with the ie driver");
+                CmdLineParameter runFireFox = new CmdLineParameter("firefox", false, "Run Selenium with the FireFox driver");
+
                 CmdLineParameter timeout = new CmdLineParameter("timeout", false, "Timeout value (seconds) to wait for the tests to finish. defaults to 90.");
-                CmdLineParameter reporter = new CmdLineParameter("reporter", false, "Reporter type : jenkins | teamcity.  Defaults to teamcity reporter "); 
+                CmdLineParameter reporter = new CmdLineParameter("reporter", false, "Reporter type : jenkins | teamcity.  Defaults to teamcity reporter ");
+                CmdLineParameter resultInput = new CmdLineParameter("reporter-input", false, "Reporter type : trivialreporter | logreporter.  Use trivial reporter for jasmine < 2.0 , use logreporter otherwise. "); 
 
 
                 ccl.RegisterParameter(outputFileName);
@@ -135,8 +139,10 @@ namespace HDWA.SeleniumTestRunner
                 ccl.RegisterParameter(inputUrlList);
                 ccl.RegisterParameter(runChrome);
                 ccl.RegisterParameter(runIE);
+                ccl.RegisterParameter(runFireFox);
                 ccl.RegisterParameter(timeout);
                 ccl.RegisterParameter(reporter);
+                ccl.RegisterParameter(resultInput);
                 ccl.Parse(args);
 
 
@@ -145,6 +151,8 @@ namespace HDWA.SeleniumTestRunner
                 string strIEBaseDir = !string.IsNullOrEmpty(ieBaseDir.Value) ? ieBaseDir.Value : @"E:\source\github\selenium-jasmine-runner\IEDriverServer_x64_2.34.0";
                 string strSpecRunnerListFile = !string.IsNullOrEmpty(inputUrlList.Value) ? inputUrlList.Value : "SpecRunnerList.txt";
                 string strReporter = !string.IsNullOrEmpty(reporter.Value) ? reporter.Value : "teamcity";
+
+                string strInput = !string.IsNullOrEmpty(resultInput.Value) ? resultInput.Value : "logreporter";
 
                 short timeoutValue = 90;
                 if (!string.IsNullOrEmpty(timeout.Value))
@@ -169,6 +177,29 @@ namespace HDWA.SeleniumTestRunner
                     
                 }
 
+                if (runFireFox.Exists)
+                {
+                    using (var firefoxDriver = new OpenQA.Selenium.Firefox.FirefoxDriver())
+                    {
+                        foreach (string strSpecRunner in strFileList)
+                        {
+                            string strPageName = strSpecRunner.Substring(strSpecRunner.LastIndexOf('/') + 1);
+                            if (strPageName.IndexOf('.') > 0)
+                                strPageName = strPageName.Substring(0, strPageName.IndexOf('.'));
+
+                            if (strInput == "logreporter")
+                                RunAllJasmineTestsAndReport_LogReporter(firefoxDriver, timeoutValue, strSpecRunner,
+                                    strPageName,
+                                    "Chrome", ref testSuites);
+                            else
+                            {
+                                RunAllJasmineTestsAndReportTrivialReporter(firefoxDriver, timeoutValue, strSpecRunner,
+                                    strPageName, "FireFox", ref testSuites);
+                            }
+                        }
+                    }
+                }
+
                 if (runChrome.Exists)
                 {
                     using (var driver = new OpenQA.Selenium.Chrome.ChromeDriver(strChromeBaseDir))
@@ -179,7 +210,14 @@ namespace HDWA.SeleniumTestRunner
                             if (strPageName.IndexOf('.') > 0)
                                 strPageName = strPageName.Substring(0, strPageName.IndexOf('.'));
 
-                            RunAllJasmineTestsAndReportTrivialReporter(driver, timeoutValue, strSpecRunner, strPageName, "Chrome", ref testSuites);
+                            if (strInput == "logreporter")
+                                RunAllJasmineTestsAndReport_LogReporter(driver, timeoutValue, strSpecRunner, strPageName,
+                                    "Chrome", ref testSuites);
+                            else
+                            {
+                                RunAllJasmineTestsAndReportTrivialReporter(driver, timeoutValue, strSpecRunner,
+                                    strPageName, "Chrome", ref testSuites);
+                            }
                         }
 
                     }
@@ -192,8 +230,6 @@ namespace HDWA.SeleniumTestRunner
                     options.EnableNativeEvents = false;
                     options.EnsureCleanSession = true;
                     
-                    //IWebDriver driver = new InternetExplorerDriver(options);
-
                     using (var driver = new OpenQA.Selenium.IE.InternetExplorerDriver(strIEBaseDir))
 
                     {
@@ -203,7 +239,10 @@ namespace HDWA.SeleniumTestRunner
                             if (strPageName.IndexOf('.') > 0)
                                 strPageName = strPageName.Substring(0, strPageName.IndexOf('.'));
 
-                            RunAllJasmineTestsAndReportTrivialReporter(driver, timeoutValue, strSpecRunner, strPageName, "IE", ref testSuites);
+                            if (strInput == "logreporter")
+                                RunAllJasmineTestsAndReport_LogReporter(driver, timeoutValue, strSpecRunner, strPageName, "IE", ref testSuites);
+                            else
+                                RunAllJasmineTestsAndReportTrivialReporter(driver, timeoutValue, strSpecRunner, strPageName, "IE", ref testSuites);
                         }
 
                     }
@@ -213,22 +252,25 @@ namespace HDWA.SeleniumTestRunner
 
                 Console.WriteLine("-----------");
 
-                testSuites.WriteToConsole();
-
-                using (FileStream fs = new FileStream(strOutputFileName, FileMode.Create, FileAccess.Write))
+                if (strInput != "logreporter")
                 {
-                    StreamWriter streamWriter = new StreamWriter(fs);
+                    testSuites.WriteToConsole();
 
-                    testSuites.WriteToStream(streamWriter);
+                    using (FileStream fs = new FileStream(strOutputFileName, FileMode.Create, FileAccess.Write))
+                    {
+                        StreamWriter streamWriter = new StreamWriter(fs);
 
-                    streamWriter.Flush();
-                }
+                        testSuites.WriteToStream(streamWriter);
 
-                using (StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()))
-                {
-                    sw.AutoFlush = true;
-                    testSuites.WriteToStream(sw);
-                    sw.Flush();
+                        streamWriter.Flush();
+                    }
+
+                    using (StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()))
+                    {
+                        sw.AutoFlush = true;
+                        testSuites.WriteToStream(sw);
+                        sw.Flush();
+                    }
                 }
             }
             catch (Exception ex)
@@ -318,6 +360,29 @@ namespace HDWA.SeleniumTestRunner
                 testSuites.Suites.Add(testSuite);
             }
 
+            
+
+        }
+
+        private static void RunAllJasmineTestsAndReport_LogReporter(IWebDriver driver, short timeoutValue, string TEST_PAGE, string strPageName, string browser, ref TestSuites testSuites)
+        {
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(timeoutValue));
+            driver.Navigate().GoToUrl(TEST_PAGE);
+
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutValue));
+
+            bool bFound = wait.Until(d =>
+            {
+                return
+                    (d.FindElement(By.CssSelector("#teamCityResultsDone")).Text.Length > 0);
+            });
+
+            var logMessages = driver.FindElements(By.CssSelector("#teamCityReporterLog > div.logentry"));
+
+            foreach (IWebElement webElement in logMessages)
+            {
+                Console.WriteLine(webElement.Text);
+            }
             
 
         }

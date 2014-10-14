@@ -34,16 +34,19 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver">
-      <HintPath>external_dlls\WebDriver.dll</HintPath>
+    <Reference Include="WebDriver, Version=2.43.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Selenium.WebDriver.2.43.1\lib\net40\WebDriver.dll</HintPath>
     </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>external_dlls\WebDriver.Support.dll</HintPath>
+    <Reference Include="WebDriver.Support, Version=2.43.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\Selenium.Support.2.43.1\lib\net40\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -53,11 +56,29 @@
     <Compile Include="TestReporters.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="external_dlls\WebDriver.dll" />
-    <Content Include="external_dlls\WebDriver.Support.dll" />
+    <Content Include="command_line_parameters.txt" />
     <Content Include="SeleniumTestRunner.xml" />
+    <Content Include="SpecRunnerListLogReporter.txt" />
     <Content Include="SpecRunnerList.txt" />
+    <Content Include="test\lib\jasmine-1.3.1\jasmine-html.js" />
+    <Content Include="test\lib\jasmine-1.3.1\jasmine.css" />
+    <Content Include="test\lib\jasmine-1.3.1\jasmine.js" />
+    <Content Include="test\lib\jasmine-2.0.0\boot.js" />
+    <Content Include="test\lib\jasmine-2.0.0\console.js" />
+    <Content Include="test\lib\jasmine-2.0.0\jasmine-html.js" />
+    <Content Include="test\lib\jasmine-2.0.0\jasmine.css" />
+    <Content Include="test\lib\jasmine-2.0.0\jasmine.js" />
+    <Content Include="test\lib\jasmine-2.0.0\jasmine_favicon.png" />
+    <Content Include="test\teamcity_reporter_1.3.html" />
+    <Content Include="test\teamcity_reporter.js" />
+    <Content Include="test\teamcity_reporter_2.0.html" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="README.md" />
+    <None Include="test\lib\jasmine-1.3.1\MIT.LICENSE" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
