@@ -1,1 +1,1 @@
-﻿http://localhost:57444/teamcity_reporter_1.3.html
+﻿http://localhost:57444/teamcity_reporter_2.0.html
