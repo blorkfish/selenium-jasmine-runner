@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20617.1 PREVIEW
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumJasmineRunner", "SeleniumJasmineRunner.csproj", "{3E44B215-7B2D-4110-8C73-3E254CE83D13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPages", "TestPages\TestPages.csproj", "{BE689F17-DAC9-4720-AAB9-4FB680E27BE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3E44B215-7B2D-4110-8C73-3E254CE83D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E44B215-7B2D-4110-8C73-3E254CE83D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E44B215-7B2D-4110-8C73-3E254CE83D13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE689F17-DAC9-4720-AAB9-4FB680E27BE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE689F17-DAC9-4720-AAB9-4FB680E27BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE689F17-DAC9-4720-AAB9-4FB680E27BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE689F17-DAC9-4720-AAB9-4FB680E27BE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

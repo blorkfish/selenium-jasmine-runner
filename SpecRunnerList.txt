@@ -1,3 +1,1 @@
-﻿http://localhost:1492/SpecRunner_SampleApp.html
-http://localhost:1492/SpecRunner_Common.html
-http://localhost:1492/SpecRunner_AMD.html
+﻿http://localhost:57444/teamcity_reporter_1.3.html
