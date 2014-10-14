@@ -70,8 +70,27 @@ Jasmine Versions
 For Jasmine tests < 2.0, this executable uses the TrivialReporter to report unit tests.  Note the code included under the /TestPages directory, or TestPages project:  
 
     /TestPages/teamcity_reporter_1.3.html
+    
+This html file runs the TrivialReporter as follows: ( you will need this in any test runner html file )
 
-**Jasmien 2.0**
+    <script type="text/javascript">
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+
+        var htmlReporter = new jasmine.TrivialReporter();
+
+        jasmineEnv.addReporter(htmlReporter);
+
+        jasmineEnv.specFilter = function (spec) {
+            return htmlReporter.specFilter(spec);
+        };
+
+        jasmine.getEnv().execute();
+    
+    </script>  
+
+
+**Jasmine 2.0**
 
 For Jasmine tests >= 2.0, this executable uses a modified version of teamcity_reporter, as the TrivialReporter has been deprecated.  Have a look a the page
 
